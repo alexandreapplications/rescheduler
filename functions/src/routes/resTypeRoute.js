@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/resTypeController");
+const Controller = require("../controllers/resTypeController");
+const controller = new Controller();
 router.get("/", controller.getList);
 module.exports = router;
