@@ -3,4 +3,8 @@ const router = express.Router();
 const Controller = require("../controllers/resTypeController");
 const controller = new Controller();
 router.get("/", controller.getList);
+router.get("/:id", controller.getSingle);
+router.post("/:id", controller.insert);
+router.put("/:id", controller.put);
+router.delete("/:id", controller.delete);
 module.exports = router;
