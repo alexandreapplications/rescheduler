@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "sharing-schedule"
+    "staging": "sharing-schedule",
+    "default": "sharing-schedule"
   }
 }
