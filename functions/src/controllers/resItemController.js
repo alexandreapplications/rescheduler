@@ -1,9 +1,9 @@
-const ResTypeModel = require("../models/resTypeModel");
-var resTypeModel = new ResTypeModel();
+const ResItemModel = require("../models/resItemModel");
+var resItemModel = new ResItemModel();
 
 module.exports = function () {
     this.getList = (req, res) => {
-        resTypeModel.getList().then(response => {
+        resItemModel.getList().then(response => {
             res.status(200).send(response);
             return response;
         }).catch(error => {
@@ -18,7 +18,7 @@ module.exports = function () {
             res.status.send("Invalid id");
         }
 
-        resTypeModel.getSingle(id).then(response => {
+        resItemModel.getSingle(id).then(response => {
             res.status(200).send(response);
             return response;
         }).catch(error => {
@@ -32,7 +32,7 @@ module.exports = function () {
             res.status.send("Invalid id");
         }
 
-        resTypeModel.insert(id, req.body).then(response => {
+        resItemModel.insert(id, req.body).then(response => {
             res.status(200).send(response);
             return response;
         }).catch(error => {
@@ -46,7 +46,7 @@ module.exports = function () {
             res.status.send("Invalid id");
         }
 
-        resTypeModel.update(id, req.body).then(response => {
+        resItemModel.update(id, req.body).then(response => {
             res.status(200).send(response);
             return response;
         }).catch(error => {
@@ -61,7 +61,7 @@ module.exports = function () {
         }
 
 
-        resTypeModel.delete(id, req.body).then(response => {
+        resItemModel.delete(id, req.body).then(response => {
             res.status(200).send(response);
             return response;
         }).catch(error => {

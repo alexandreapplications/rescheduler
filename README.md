@@ -4,13 +4,25 @@ Website and backend allowing to anyone schedule a resource.
 
 # Front End
 
+This application will have a front end allow all users to
+
+- Confirm meeting participation
+- Book a resource if authorized by the domain company
+-
+
+**/**
+Initial page will explain the application propose, how to use, why subscribe.
+
 # Backend
 
 **/User**
 
 **/Domain**
-Default availability - Begin, End, Minor Time, Max Time
-MustConfirm
+
+- Default availability - Begin, End, Minor Time, Max Time
+- MustConfirm
+- Administrators
+- Book users
 
 **/ResourceType**
 Manages the standard default types for this application along with its pictures such as
@@ -21,7 +33,7 @@ _Models_
 
 - Id
 - Domain
-- Description
+- Name
 - HasMaxUsers
 - Picture
 
@@ -29,12 +41,12 @@ _Apis_
 
 - Standard crud with ResourceTypeModel
 
-**/Resource/:domain**
+**/ResourceItem/:domain**
 Enlists the resources for this application
 
 _Models_
 
-1. Resource
+1. ResourceItem
 
 - Id
 - Domain
@@ -44,6 +56,7 @@ _Models_
 - ResourceType
 - Location
 - Availability - Begin, End, Minor Time, Max Time
+  - Second version
 - Picture
 - UsersToApprove
 - UsersToNotify

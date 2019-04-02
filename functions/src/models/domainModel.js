@@ -1,13 +1,13 @@
 module.exports = function () {
     const Joi = require('joi');
-    const COLLECTIONNAME = "ResTypes";
+    const COLLECTIONNAME = "Domain";
     const CrudUtil = require('../@common/crudModelUtil')
     const crudUtil = new CrudUtil(COLLECTIONNAME);
 
     const modelSchema = Joi.object().keys({
-        name: Joi.string().min(6).max(30).required(),
-        hasMaxUsers: Joi.boolean(),
-        picture: Joi.string().uri()
+        name: Joi.string().required(),
+        picture: Joi.string().uri(),
+        users: Joi.array().items(Joi.string().email())
     })
 
 
@@ -20,6 +20,7 @@ module.exports = function () {
     }
 
     this.insert = (id, model) => {
+        console.log("Inserting")
         return crudUtil.insert(id, model, modelSchema);
     }
 

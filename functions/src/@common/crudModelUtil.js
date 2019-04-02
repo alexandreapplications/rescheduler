@@ -52,7 +52,7 @@ module.exports = function (colectionName) {
                 const docRef = db.collection(colectionName).doc(id);
 
                 try {
-                    docRef.set(data);
+                    docRef.set(model);
                     resolve(true);
                 } catch (error) {
                     reject(error);
