@@ -1,10 +1,10 @@
-const ResItemModel = require("../models/resItemModel");
-var controllerModel = new ResItemModel();
+const ResItemService = require("../service/resItemService");
+var service = new ResItemService();
 const responseUtil = require("../@common/responseUtil");
 
 module.exports = function () {
     this.getList = (req, res) => {
-        controllerModel.getList().then(response => {
+        service.getList().then(response => {
             responseUtil.okResponse(res, null, response)
             return response;
         }).catch(error => {
@@ -20,7 +20,7 @@ module.exports = function () {
             return
         }
 
-        controllerModel.getSingle(id).then(response => {
+        service.getSingle(id).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
@@ -35,7 +35,7 @@ module.exports = function () {
             return
         }
 
-        controllerModel.insert(id, req.body).then(response => {
+        service.insert(id, req.body).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
@@ -50,7 +50,7 @@ module.exports = function () {
             return
         }
 
-        controllerModel.update(id, req.body).then(response => {
+        service.update(id, req.body).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
@@ -65,7 +65,7 @@ module.exports = function () {
             return
         }
 
-        controllerModel.delete(id, req.body).then(response => {
+        service.delete(id, req.body).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {

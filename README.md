@@ -16,6 +16,15 @@ Initial page will explain the application propose, how to use, why subscribe.
 # Backend
 
 **/User**
+Manages the user information
+
+_Models_
+
+1. CreateUserCommand
+2. Roles
+
+- IncludeRole
+- RemoveRole
 
 **/Domain**
 
