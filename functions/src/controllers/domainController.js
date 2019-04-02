@@ -1,10 +1,10 @@
 const DomainModel = require("../models/domainModel");
-var domainModel = new DomainModel();
+var controllerModel = new DomainModel();
 const responseUtil = require("../@common/responseUtil");
 
 module.exports = function () {
     this.getList = (req, res) => {
-        domainModel.getList().then(response => {
+        controllerModel.getList().then(response => {
             responseUtil.okResponse(res, null, response)
             return response;
         }).catch(error => {
@@ -20,7 +20,7 @@ module.exports = function () {
             return
         }
 
-        domainModel.getSingle(id).then(response => {
+        controllerModel.getSingle(id).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
@@ -35,7 +35,7 @@ module.exports = function () {
             return
         }
 
-        domainModel.insert(id, req.body).then(response => {
+        controllerModel.insert(id, req.body).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
@@ -50,7 +50,7 @@ module.exports = function () {
             return
         }
 
-        domainModel.update(id, req.body).then(response => {
+        controllerModel.update(id, req.body).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
@@ -65,7 +65,7 @@ module.exports = function () {
             return
         }
 
-        domainModel.delete(id, req.body).then(response => {
+        controllerModel.delete(id, req.body).then(response => {
             responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {

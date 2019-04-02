@@ -1,13 +1,14 @@
 const ResItemModel = require("../models/resItemModel");
-var resItemModel = new ResItemModel();
+var controllerModel = new ResItemModel();
+const responseUtil = require("../@common/responseUtil");
 
 module.exports = function () {
     this.getList = (req, res) => {
-        resItemModel.getList().then(response => {
-            res.status(200).send(response);
+        controllerModel.getList().then(response => {
+            responseUtil.okResponse(res, null, response)
             return response;
         }).catch(error => {
-            res.status(400).send(error);
+            responseUtil.errorResponse(res, null, error)
         });
     }
 
@@ -15,57 +16,60 @@ module.exports = function () {
     this.getSingle = (req, res) => {
         const id = req.params.id;
         if (!IDREGEX.test(id)) {
-            res.status.send("Invalid id");
+            responseUtil.invalidIdResponse(res, id)
+            return
         }
 
-        resItemModel.getSingle(id).then(response => {
-            res.status(200).send(response);
+        controllerModel.getSingle(id).then(response => {
+            responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
-            res.status(400).send(error);
+            responseUtil.errorResponse(res, id, error)
         });
     }
 
     this.insert = (req, res) => {
         const id = req.params.id;
         if (!IDREGEX.test(id)) {
-            res.status.send("Invalid id");
+            responseUtil.invalidIdResponse(res, id)
+            return
         }
 
-        resItemModel.insert(id, req.body).then(response => {
-            res.status(200).send(response);
+        controllerModel.insert(id, req.body).then(response => {
+            responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
-            res.status(400).send(error);
+            responseUtil.errorResponse(res, id, error)
         });
     }
 
     this.update = (req, res) => {
         const id = req.params.id;
         if (!IDREGEX.test(id)) {
-            res.status.send("Invalid id");
+            responseUtil.invalidIdResponse(res, id)
+            return
         }
 
-        resItemModel.update(id, req.body).then(response => {
-            res.status(200).send(response);
+        controllerModel.update(id, req.body).then(response => {
+            responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
-            res.status(400).send(error);
+            responseUtil.errorResponse(res, id, error)
         });
     }
 
     this.delete = (req, res) => {
         const id = req.params.id;
         if (!IDREGEX.test(id)) {
-            res.status.send("Invalid id");
+            responseUtil.invalidIdResponse(res, id)
+            return
         }
 
-
-        resItemModel.delete(id, req.body).then(response => {
-            res.status(200).send(response);
+        controllerModel.delete(id, req.body).then(response => {
+            responseUtil.okResponse(res, id, response)
             return response;
         }).catch(error => {
-            res.status(400).send(error);
+            responseUtil.errorResponse(res, id, error)
         });
     }
 

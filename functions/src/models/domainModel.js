@@ -20,7 +20,6 @@ module.exports = function () {
     }
 
     this.insert = (id, model) => {
-        console.log("Inserting")
         return crudUtil.insert(id, model, modelSchema);
     }
 
