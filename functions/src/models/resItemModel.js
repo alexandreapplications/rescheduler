@@ -2,7 +2,6 @@ module.exports = function () {
     const Joi = require('joi');
     const COLLECTIONNAME = "ResItem";
     const CrudUtil = require('../@common/crudModelUtil')
-    const crudUtil = new CrudUtil(COLLECTIONNAME);
 
     const modelSchema = Joi.object().keys({
         domain: Joi.string().required(),
@@ -20,24 +19,29 @@ module.exports = function () {
     })
 
 
-    this.getList = (domain) => {
+    this.getList = (domainKey) => {
+        const crudUtil = new CrudUtil(COLLECTIONNAME, domainKey);
         return crudUtil.getList();
     }
 
-    this.getSingle = (domain, id) => {
-        return crudUtil.getSingle(`${domain}-${id}`);
+    this.getSingle = (domainKey, id) => {
+        const crudUtil = new CrudUtil(COLLECTIONNAME, domainKey);
+        return crudUtil.getSingle(id);
     }
 
-    this.insert = (domain, id, model) => {
-        return crudUtil.insert(`${domain}-${id}`, model, modelSchema);
+    this.insert = (domainKey, id, model) => {
+        const crudUtil = new CrudUtil(COLLECTIONNAME, domainKey);
+        return crudUtil.insert(id, model, modelSchema);
     }
 
-    this.update = (domain, id, model) => {
-        return crudUtil.update(`${domain}-${id}`, model, modelSchema)
+    this.update = (domainKey, id, model) => {
+        const crudUtil = new CrudUtil(COLLECTIONNAME, domainKey);
+        return crudUtil.update(id, model, modelSchema)
     }
 
-    this.delete = (domain, id) => {
-        return crudUtil.delete(`${domain}-${id}`);
+    this.delete = (domainKey, id) => {
+        const crudUtil = new CrudUtil(COLLECTIONNAME, domainKey);
+        return crudUtil.delete(id);
     }
 
     return this;

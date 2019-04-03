@@ -1,4 +1,4 @@
-module.exports = function (colectionName) {
+module.exports = function (colectionName, domainKey) {
     const admin = require("firebase-admin");
     const db = admin.firestore();
     const Joi = require('joi');
@@ -6,7 +6,9 @@ module.exports = function (colectionName) {
     this.getList = () => {
         return new Promise((resolve, reject) => {
             try {
-                db.collection(colectionName).get().then(querySnapShot => {
+                var filter = domainKey ? db.collection(colectionName).where("domain", "==", domainKey) :
+                    db.collection(colectionName)
+                filter.get().then(querySnapShot => {
                     var data = [];
                     querySnapShot.forEach(x => data.push({
                         id: x.ref.id,
@@ -28,7 +30,8 @@ module.exports = function (colectionName) {
     this.getSingle = (id) => {
         return new Promise((resolve, reject) => {
             try {
-                db.collection(colectionName).doc(id).get().then(doc => {
+                const filterId = domainKey ? `${domainKey}#${id}` : id;
+                db.collection(colectionName).doc(filterId).get().then(doc => {
                     if (doc.exists) {
                         resolve(doc.data());
                         return doc.data();
@@ -46,10 +49,12 @@ module.exports = function (colectionName) {
 
     this.insert = (id, model, insertSchema) => {
         return new Promise((resolve, reject) => {
+            model.domain = domainKey;
             if ((validationResponse = Joi.validate(model, insertSchema)).error) {
                 reject(validationResponse)
             } else {
-                const docRef = db.collection(colectionName).doc(id);
+                const filterId = domainKey ? `${domainKey}#${id}` : id;
+                const docRef = db.collection(colectionName).doc(filterId);
 
                 try {
                     docRef.set(model);
@@ -63,10 +68,12 @@ module.exports = function (colectionName) {
 
     this.update = (id, model, updateSchema) => {
         return new Promise((resolve, reject) => {
+            model.domain = domainKey;
             if ((validationResponse = Joi.validate(model, updateSchema)).error) {
                 reject(validationResponse)
             } else {
-                var docRef = db.collection(colectionName).doc(id);
+                const filterId = domainKey ? `${domainKey}#${id}` : id;
+                var docRef = db.collection(colectionName).doc(filterId);
                 docRef.get().then(doc => {
                     if (doc.exists) {
                         var record = doc.data();
@@ -91,7 +98,8 @@ module.exports = function (colectionName) {
     this.delete = (id) => {
         return new Promise((resolve, reject) => {
             try {
-                var docRef = db.collection(colectionName).doc(id);
+                const filterId = domainKey ? `${domainKey}#${id}` : id;
+                var docRef = db.collection(colectionName).doc(filterId);
                 docRef
                     .delete()
                     .then(result => {
