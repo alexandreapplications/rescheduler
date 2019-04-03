@@ -20,24 +20,24 @@ module.exports = function () {
     })
 
 
-    this.getList = () => {
+    this.getList = (domain) => {
         return crudUtil.getList();
     }
 
-    this.getSingle = (id) => {
-        return crudUtil.getSingle(id);
+    this.getSingle = (domain, id) => {
+        return crudUtil.getSingle(`${domain}-${id}`);
     }
 
-    this.insert = (id, model) => {
-        return crudUtil.insert(id, model, modelSchema);
+    this.insert = (domain, id, model) => {
+        return crudUtil.insert(`${domain}-${id}`, model, modelSchema);
     }
 
-    this.update = (id, model) => {
-        return crudUtil.update(id, model, modelSchema)
+    this.update = (domain, id, model) => {
+        return crudUtil.update(`${domain}-${id}`, model, modelSchema)
     }
 
-    this.delete = (id) => {
-        return crudUtil.delete(id);
+    this.delete = (domain, id) => {
+        return crudUtil.delete(`${domain}-${id}`);
     }
 
     return this;

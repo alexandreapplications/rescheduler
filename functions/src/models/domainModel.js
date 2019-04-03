@@ -6,8 +6,7 @@ module.exports = function () {
 
     const modelSchema = Joi.object().keys({
         name: Joi.string().required(),
-        picture: Joi.string().uri(),
-        users: Joi.array().items(Joi.string().email())
+        picture: Joi.string().uri()
     })
 
 
@@ -19,12 +18,12 @@ module.exports = function () {
         return crudUtil.getSingle(id);
     }
 
-    this.insert = (id, model) => {
-        return crudUtil.insert(id, model, modelSchema);
+    this.insert = (id, record) => {
+        return crudUtil.insert(id, record, modelSchema);
     }
 
-    this.update = (id, model) => {
-        return crudUtil.update(id, model, modelSchema)
+    this.update = (id, record) => {
+        return crudUtil.update(id, record, modelSchema)
     }
 
     this.delete = (id) => {

@@ -2,24 +2,24 @@ const ResItemModel = require("../models/resItemModel")
 module.exports = function () {
     const model = new ResItemModel();
 
-    this.getList = () => {
-        return model.getList();
+    this.getList = (domain) => {
+        return model.getList(domain);
     }
 
-    this.getSingle = (id) => {
-        return model.getSingle(id);
+    this.getSingle = (domain, id) => {
+        return model.getSingle(domain, id);
     }
 
-    this.insert = (id, model) => {
-        return model.insert(id, model, modelSchema);
+    this.insert = (domain, id, record) => {
+        return model.insert(domain, id, record, modelSchema);
     }
 
-    this.update = (id, model) => {
-        return model.update(id, model, modelSchema)
+    this.update = (domain, id, record) => {
+        return model.update(domain, id, record, modelSchema)
     }
 
-    this.delete = (id) => {
-        return model.delete(id);
+    this.delete = (domain, id) => {
+        return model.delete(domain, id);
     }
 
     return this;

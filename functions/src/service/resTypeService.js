@@ -10,12 +10,12 @@ module.exports = function () {
         return model.getSingle(id);
     }
 
-    this.insert = (id, model) => {
-        return model.insert(id, model, modelSchema);
+    this.insert = (id, record) => {
+        return model.insert(id, record);
     }
 
-    this.update = (id, model) => {
-        return model.update(id, model, modelSchema)
+    this.update = (id, record) => {
+        return model.update(id, record)
     }
 
     this.delete = (id) => {

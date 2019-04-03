@@ -2,6 +2,10 @@ exports.invalidIdResponse = function (res, id) {
     res.status(400).send(createResponse(false, id, `Id [${ id }] is inválid`, null));
 }
 
+exports.invalidDomainResponse = function (res, id) {
+    res.status(400).send(createResponse(false, id, `The domain [${ id }] is inválid`, null));
+}
+
 exports.errorResponse = function (res, id, error) {
     if (error.error) {
         res.status(400).send(createResponse(false, id, "An Error has occurred", error));
