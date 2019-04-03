@@ -11,7 +11,7 @@ module.exports = function (colectionName, domainKey) {
                 filter.get().then(querySnapShot => {
                     var data = [];
                     querySnapShot.forEach(x => data.push({
-                        id: x.ref.id,
+                        id: domainKey ? (x.ref.id).replace(`${domainKey}#`, '') : x.ref.id,
                         value: x.data()
                     }));
                     resolve(data);

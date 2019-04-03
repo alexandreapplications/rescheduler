@@ -9,7 +9,7 @@ module.exports = function () {
 
     this.getList = (req, res) => {
         const domain = req.params.domain;
-        if (domainService.isDomainValid(domain)) {
+        if (!domainService.isDomainValid(domain)) {
             responseUtil.invalidDomainResponse(res, domain);
             return;
         }
@@ -24,7 +24,7 @@ module.exports = function () {
 
     this.getSingle = (req, res) => {
         const domain = req.params.domain;
-        if (domainService.isDomainValid(domain)) {
+        if (!domainService.isDomainValid(domain)) {
             responseUtil.invalidDomainResponse(res, domain);
             return;
         }
@@ -45,7 +45,7 @@ module.exports = function () {
 
     this.insert = (req, res) => {
         const domain = req.params.domain;
-        if (domainService.isDomainValid(domain)) {
+        if (!domainService.isDomainValid(domain)) {
             responseUtil.invalidDomainResponse(res, domain);
             return;
         }
@@ -66,7 +66,7 @@ module.exports = function () {
 
     this.update = (req, res) => {
         const domain = req.params.domain;
-        if (domainService.isDomainValid(domain)) {
+        if (!domainService.isDomainValid(domain)) {
             responseUtil.invalidDomainResponse(res, domain);
             return;
         }
@@ -87,7 +87,7 @@ module.exports = function () {
 
     this.delete = (req, res) => {
         const domain = req.params.domain;
-        if (domainService.isDomainValid(domain)) {
+        if (!domainService.isDomainValid(domain)) {
             responseUtil.invalidDomainResponse(res, domain);
             return;
         }

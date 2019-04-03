@@ -11,11 +11,11 @@ module.exports = function () {
     }
 
     this.insert = (domain, id, record) => {
-        return model.insert(domain, id, record, modelSchema);
+        return model.insert(domain, id, record);
     }
 
     this.update = (domain, id, record) => {
-        return model.update(domain, id, record, modelSchema)
+        return model.update(domain, id, record)
     }
 
     this.delete = (domain, id) => {
