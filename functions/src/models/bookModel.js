@@ -1,13 +1,20 @@
 module.exports = function () {
     const Joi = require('joi');
-    const COLLECTIONNAME = "ResTypes";
+    const COLLECTIONNAME = "Book";
     const CrudUtil = require('../@common/crudModelUtil')
     const crudUtil = new CrudUtil(COLLECTIONNAME);
 
     const modelSchema = Joi.object().keys({
-        name: Joi.string().min(3).max(30).required(),
-        hasMaxUsers: Joi.boolean(),
-        picture: Joi.string().uri()
+        initialDate: Joi.date().required(),
+        finalDate: Joi.date().required(),
+        user: Joi.string().email().required(),
+        invitedUserList: Joi.array(),
+        confirmedUserList: Joi.array(),
+        presentUserList: Joi.array(),
+        resourceList: Joi.array(),
+        isConfirmed: Joi.bool(),
+        isApproved: Joi.bool(),
+        isDeleted: Joi.bool()
     })
 
 

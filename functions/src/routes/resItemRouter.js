@@ -1,0 +1,10 @@
+const express = require("express");
+const router = express.Router();
+const Controller = require("../controllers/resItemController");
+const controller = new Controller();
+router.get("/:domain/", controller.getList);
+router.get("/:domain/:id", controller.getSingle);
+router.post("/:domain/:id", controller.insert);
+router.put("/:domain/:id", controller.update);
+router.delete("/:domain/:id", controller.delete);
+module.exports = router;

@@ -1,5 +1,5 @@
-const ResTypeService = require("../service/resTypeService");
-var service = new ResTypeService();
+const DomainService = require("../service/domainService");
+var service = new DomainService();
 const responseUtil = require("../@common/responseUtil");
 
 module.exports = function () {

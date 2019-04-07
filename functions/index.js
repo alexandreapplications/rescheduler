@@ -17,7 +17,9 @@ admin.initializeApp({
 // [END setup firebase]
 
 // [START setup roles]
-const resTypeRoute = require("./src/routes/resTypeRoute");
+const resTypeRouter = require("./src/routes/resTypeRouter");
+const resItemRouter = require("./src/routes/resItemRouter");
+const domainRouter = require("./src/routes/domainRouter");
 
 const express = require("express");
 
@@ -28,5 +30,7 @@ function setupRoute(route) {
   return app;
 }
 
-exports.resType = functions.https.onRequest(setupRoute(resTypeRoute));
+exports.resType = functions.https.onRequest(setupRoute(resTypeRouter));
+exports.resItem = functions.https.onRequest(setupRoute(resItemRouter));
+exports.domain = functions.https.onRequest(setupRoute(domainRouter));
 // [END setup roles]

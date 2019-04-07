@@ -1,12 +1,11 @@
 module.exports = function () {
     const Joi = require('joi');
-    const COLLECTIONNAME = "ResTypes";
+    const COLLECTIONNAME = "Domain";
     const CrudUtil = require('../@common/crudModelUtil')
     const crudUtil = new CrudUtil(COLLECTIONNAME);
 
     const modelSchema = Joi.object().keys({
-        name: Joi.string().min(3).max(30).required(),
-        hasMaxUsers: Joi.boolean(),
+        name: Joi.string().required(),
         picture: Joi.string().uri()
     })
 
@@ -19,12 +18,12 @@ module.exports = function () {
         return crudUtil.getSingle(id);
     }
 
-    this.insert = (id, model) => {
-        return crudUtil.insert(id, model, modelSchema);
+    this.insert = (id, record) => {
+        return crudUtil.insert(id, record, modelSchema);
     }
 
-    this.update = (id, model) => {
-        return crudUtil.update(id, model, modelSchema)
+    this.update = (id, record) => {
+        return crudUtil.update(id, record, modelSchema)
     }
 
     this.delete = (id) => {
