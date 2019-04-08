@@ -12,9 +12,9 @@ import { SecurityService } from './infra/services/security.service';
 import { UserService } from './infra/services/user.service';
 
 @NgModule({
-	declarations: [AppComponent, MainComponent],
-	imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule],
-	providers: [DomainService, ResourceItemService, SecurityService, UserService],
-	bootstrap: [AppComponent],
+    declarations: [AppComponent, MainComponent],
+    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule],
+    providers: [DomainService, ResourceItemService, SecurityService, UserService],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}
