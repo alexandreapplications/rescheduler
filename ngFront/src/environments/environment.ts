@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  webapi: {
+    resType: 'http://localhost:5000/sharing-schedule/us-central1/resType',
+    resItem: 'http://localhost:5000/sharing-schedule/us-central1/resItem',
+    domain: 'http://localhost:5000/sharing-schedule/us-central1/domain'
+  }
 };
 
 /*
