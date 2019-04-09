@@ -10,11 +10,12 @@ import { DomainService } from './infra/services/domain.service';
 import { ResourceItemService } from './infra/services/resource-item.service';
 import { SecurityService } from './infra/services/security.service';
 import { UserService } from './infra/services/user.service';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
-	declarations: [AppComponent, MainComponent],
-	imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule],
-	providers: [DomainService, ResourceItemService, SecurityService, UserService],
-	bootstrap: [AppComponent],
+    declarations: [AppComponent, MainComponent],
+    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, HttpClientModule],
+    providers: [DomainService, ResourceItemService, SecurityService, UserService, HttpClient],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

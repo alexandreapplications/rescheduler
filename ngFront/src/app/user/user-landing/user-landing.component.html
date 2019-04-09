@@ -1,3 +1,11 @@
 <p>
-  user-landing works!
+    user-landing works!
 </p>
+<div *ngIf="itemList">
+    <div *ngFor="let item of itemList">
+        {{ item.value.name }}
+    </div>
+</div>
+<div *ngIf="!itemList">
+    Loading
+</div>
