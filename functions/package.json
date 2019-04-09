@@ -11,12 +11,14 @@
   },
   "dependencies": {
     "firebase-admin": "~7.0.0",
-    "firebase-functions": "^2.2.0"
+    "firebase-functions": "^2.2.1",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "joi": "^14.3.1"
   },
   "devDependencies": {
-    "eslint": "^5.12.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "joi": "^14.3.1"
+    "eslint": "^5.16.0",
+    "eslint-plugin-promise": "^4.1.1"
   },
   "private": true
 }
