@@ -2,9 +2,11 @@
     user-landing works!
 </p>
 <div *ngIf="itemList">
-    <div *ngFor="let item of itemList">
-        {{ item.value.name }}
-    </div>
+    <mat-card *ngFor="let item of itemList">
+        <mat-card-content>
+            {{ item.value.name }}
+        </mat-card-content>
+    </mat-card>
 </div>
 <div *ngIf="!itemList">
     Loading
