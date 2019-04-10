@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { UserLandingComponent } from './user-landing/user-landing.component';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatButtonModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     declarations: [UserLandingComponent],
-    imports: [CommonModule, UserRoutingModule, MatCardModule],
+    imports: [CommonModule, UserRoutingModule, FlexLayoutModule, MatCardModule, MatButtonModule],
 })
 export class UserModule {}
