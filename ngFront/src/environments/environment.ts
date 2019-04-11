@@ -3,12 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  webapi: {
-    resType: 'http://localhost:5000/sharing-schedule/us-central1/resType',
-    resItem: 'http://localhost:5000/sharing-schedule/us-central1/resItem',
-    domain: 'http://localhost:5000/sharing-schedule/us-central1/domain'
-  }
+    production: false,
+    webapi: {
+        resType: 'http://localhost:5000/sharing-schedule/us-central1/resType',
+        resItem: 'http://localhost:5000/sharing-schedule/us-central1/resItem',
+        domain: 'http://localhost:5000/sharing-schedule/us-central1/domain',
+    },
+    firebase: {
+        apiKey: 'AIzaSyBOStoVGM0jp46KQLIf5DPYIiUMdQ3aT-g',
+        authDomain: 'sharing-schedule.firebaseapp.com',
+        databaseURL: 'https://sharing-schedule.firebaseio.com',
+        projectId: 'sharing-schedule',
+        storageBucket: '<BUCKET>.appspot.com',
+        messagingSenderId: '<SENDER_ID>',
+    },
 };
 
 /*

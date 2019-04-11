@@ -11,10 +11,21 @@ import { ResourceItemService } from './infra/services/resource-item.service';
 import { SecurityService } from './infra/services/security.service';
 import { UserService } from './infra/services/user.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
     declarations: [AppComponent, MainComponent],
-    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, SharedModule, HttpClientModule],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        SharedModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    ],
     providers: [DomainService, ResourceItemService, SecurityService, UserService, HttpClient],
     bootstrap: [AppComponent],
 })
