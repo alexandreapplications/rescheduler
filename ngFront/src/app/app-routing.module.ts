@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './public/main/main.component';
 import { AuthGuard } from './infra/guard/auth.guard';
+import { LogonComponent } from './security/logon/logon.component';
 
 const routes: Routes = [
     {
         path: '',
         component: MainComponent,
+    },
+    {
+        path: 'security',
+        loadChildren: './security/security.module#SecurityModule',
     },
     {
         path: 'me',

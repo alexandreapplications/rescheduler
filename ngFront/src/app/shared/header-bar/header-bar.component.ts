@@ -10,4 +10,8 @@ export class HeaderBarComponent implements OnInit {
     constructor(public security: SecurityService) {}
 
     ngOnInit() {}
+
+    public doSignOut() {
+        this.security.doSignOut();
+    }
 }

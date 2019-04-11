@@ -8,26 +8,23 @@ import {
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
     UrlTree,
+    Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-    constructor(public afAuth: AngularFireAuth) {}
+    constructor(public afAuth: AngularFireAuth, public router: Router) {}
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         if (this.afAuth.auth.currentUser == null) {
-            let response = false;
-            this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((x) => {
-                response = x != null;
-            });
-            return response;
+            this.router.navigate(['/security/signin']);
+            return false;
         } else {
             return true;
         }

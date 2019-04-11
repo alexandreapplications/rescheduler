@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    <span>My Application</span>
-    <span class="fill-remaining-space"></span>
-    <a mat-button *ngIf="security.isLogged()" [routerLink]="['/me']" routerLinkActive="mat-accent">Dashboard</a>
+  <span>My Application</span>
+  <span class="fill-remaining-space"></span>
+  <a mat-button *ngIf="security.isLogged()" (click)="doSignOut()">SignOut</a>
 </mat-toolbar>

@@ -5,8 +5,8 @@ import { MatToolbarModule, MatButtonModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [HeaderBarComponent],
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, RouterModule],
-  exports: [HeaderBarComponent]
+    declarations: [HeaderBarComponent],
+    imports: [CommonModule, MatToolbarModule, MatButtonModule, RouterModule],
+    exports: [HeaderBarComponent],
 })
 export class SharedModule {}
