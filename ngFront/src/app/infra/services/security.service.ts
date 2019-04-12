@@ -8,15 +8,18 @@ import { Router } from '@angular/router';
 export class SecurityService {
     constructor(public afAuth: AngularFireAuth, public router: Router) {}
 
-    public isLogged(): boolean {
+    public get isLogged(): boolean {
         return this.afAuth.auth.currentUser != null;
     }
 
     public doSignOut(): void {
-        var router = this.router;
         this.afAuth.auth.signOut().then((value) => {
             this.router.navigate(['~/']);
         });
+    }
+
+    public get currentUser(): firebase.UserInfo {
+        return this.afAuth.auth.currentUser;
     }
 
     public getCurrentUser(): firebase.User {
