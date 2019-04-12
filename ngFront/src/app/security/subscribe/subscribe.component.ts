@@ -19,4 +19,13 @@ export class SubscribeComponent implements OnInit {
             password: ['', Validators.required],
         });
     }
+
+    public doSubmit(): void {
+        if (this.logonForm.valid) {
+            this.afAuth.auth.createUserAndRetrieveDataWithEmailAndPassword(
+                this.logonForm.value.email,
+                this.logonForm.value.password,
+            );
+        }
+    }
 }
