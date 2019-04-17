@@ -1,14 +1,15 @@
 <mat-toolbar color="primary">
-  <span>My Application</span>
+  <span>Resource</span>
   <span class="fill-remaining-space"></span>
-  <button mat-button *ngIf="security.isLogged" [routerLink]="['/me']">
-    {{ security.currentUser.displayName }}
-    <img [src]="security.currentUser.photoURL" style="height:30px" />
+  <button mat-button *ngIf="info" [routerLink]="['/me']">
+    {{ info.displayName }}
+    <img [src]="info.photoURL" style="height:30px" />
   </button>
-  <a mat-button mat-icon-button *ngIf="security.isLogged" (click)="doSignOut()">
+  <a mat-button mat-icon-button *ngIf="info" (click)="doSignOut()">
     <mat-icon>work_outline</mat-icon>
   </a>
-  <button mat-button *ngIf="!security.isLogged" [routerLink]="['/me']">
+  <button mat-button *ngIf="info" [routerLink]="['/me']">
     SignIn
   </button>
+  <div>teste {{ info | json }} - {{ security.isLogged }}</div>
 </mat-toolbar>

@@ -14,6 +14,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @NgModule({
     declarations: [AppComponent, MainComponent],
