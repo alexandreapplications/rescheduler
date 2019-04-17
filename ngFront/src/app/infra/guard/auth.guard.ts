@@ -12,22 +12,18 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { SecurityService } from '../services/security.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-    constructor(public afAuth: AngularFireAuth, public router: Router) {}
+    constructor(private security: SecurityService, public router: Router) {}
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if (this.afAuth.auth.currentUser == null) {
-            this.router.navigate(['/security/signin']);
-            return false;
-        } else {
-            return true;
-        }
+        return this.security.isLogged;
     }
     canActivateChild(
         next: ActivatedRouteSnapshot,

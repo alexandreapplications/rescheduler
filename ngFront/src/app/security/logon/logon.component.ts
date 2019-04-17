@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { SecurityService } from 'src/app/infra/services/security.service';
 
 @Component({
     selector: 'rsc-logon',
@@ -9,7 +10,7 @@ import { auth } from 'firebase/app';
     styleUrls: ['./logon.component.scss'],
 })
 export class LogonComponent implements OnInit {
-    constructor(private formBuilder: FormBuilder, public afAuth: AngularFireAuth) {}
+    constructor(private formBuilder: FormBuilder, private securityService: SecurityService) {}
 
     public logonForm: FormGroup;
 
@@ -21,12 +22,12 @@ export class LogonComponent implements OnInit {
     }
 
     public doGoogleSignIn() {
-        this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+        this.securityService.doGoogleLogin().then((res) => {});
     }
 
     public doSubmit() {
         if (this.logonForm.valid) {
-            this.afAuth.auth.signInWithEmailAndPassword(this.logonForm.value.email, this.logonForm.value.password);
+            this.securityService.doSignInEmailAndPassword(this.logonForm.value.email, this.logonForm.value.password);
         }
     }
 }
