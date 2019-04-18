@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { Router, UrlSegment } from '@angular/router';
 import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
@@ -10,28 +11,31 @@ export class SecurityService {
     constructor(private afAuth: AngularFireAuth, private router: Router) {
         afAuth.auth.onAuthStateChanged((user) => {
             if (user) {
-                debugger;
                 this.isLogged = true;
-                this.doReturnAsLogged();
             } else {
                 this.isLogged = false;
-                this.doNavigateToLogin();
             }
         });
     }
 
-    private _currentRoute: string;
+    private _currentRoute: UrlSegment[];
 
     public isLogged = false;
 
+    public doSetNextRouteUrl(routeUrl: UrlSegment[]) {
+        this._currentRoute = routeUrl;
+    }
+
+    get currentUserObservable(): Observable<firebase.User> {
+        return this.afAuth.authState;
+    }
+
     public doReturnAsLogged() {
-        if (this._currentRoute) this.router.navigateByUrl(this._currentRoute);
+        if (this._currentRoute) this.router.navigateByUrl('me');
     }
 
     public doNavigateToLogin() {
-        this._currentRoute = this.router.routerState.snapshot.url;
-        // No user is signed in.
-        this.router.navigate(['/security', 'login']);
+        this.router.navigate(['/security', 'signin']);
     }
 
     public doFacebookLogin() {

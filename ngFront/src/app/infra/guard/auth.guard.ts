@@ -11,7 +11,7 @@ import {
     Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { take, map, tap } from 'rxjs/operators';
 import { SecurityService } from '../services/security.service';
 
 @Injectable({
@@ -23,7 +23,25 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        return this.security.isLogged;
+        if (this.security.isLogged) {
+            return true;
+        }
+        let result = true;
+        this.security.currentUserObservable
+            .pipe(
+                take(1),
+                map((user) => !!user),
+                tap((loggedIn) => {
+                    if (!loggedIn) {
+                        console.log('access denied');
+                        this.router.navigate(['/security', 'signin']);
+                    }
+                }),
+            )
+            .subscribe((x) => {
+                result = x;
+            });
+        return result;
     }
     canActivateChild(
         next: ActivatedRouteSnapshot,
