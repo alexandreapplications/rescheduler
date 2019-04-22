@@ -1,7 +1,8 @@
-<form [formGroup]="logonForm" (submit)="doSubmit()">
-    <div>
-        <mat-card style="max-width:50%">
-            <mat-card-content fxLayout="column" fxLayoutAlign="space-around stretch">
+<rsc-header-bar></rsc-header-bar>
+<div class="logon-container">
+    <mat-card>
+        <form [formGroup]="logonForm" (submit)="doSubmit()">
+            <mat-card-content>
                 <mat-form-field>
                     <input type="email" matInput placeholder="Email" formControlName="email" />
                     <mat-error *ngIf="this.logonForm.controls['email'].hasError('required')">
@@ -23,6 +24,6 @@
                 <button mat-button type="button" (click)="doGoogleSignIn()">Sign-in with google</button>
                 <a mat-button [routerLink]="['/security', 'subscribe']">Subscribe</a>
             </mat-card-actions>
-        </mat-card>
-    </div>
-</form>
+        </form>
+    </mat-card>
+</div>

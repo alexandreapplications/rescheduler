@@ -9,7 +9,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class HeaderBarComponent implements OnInit {
     constructor(public security: SecurityService, private afAuth: AngularFireAuth) {
-        console.log(security.isLogged);
         afAuth.auth.onAuthStateChanged((user) => {
             if (user) {
                 this.info = {

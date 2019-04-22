@@ -1,15 +1,18 @@
 <mat-toolbar color="primary">
-    <span>Resource</span>
-    <span class="fill-remaining-space"></span>
-    <button mat-button [routerLink]="['/']">Home</button>
+    <h1 [routerLink]="['/']">Scheduler</h1>
     <button mat-button *ngIf="info && info.isLoggedIn" [routerLink]="['/me']">
-        {{ info.displayName }}
-        <img [src]="info.photoURL" style="height:30px" />
+        My Place
     </button>
-    <a mat-button mat-icon-button *ngIf="info && info.isLoggedIn" (click)="doSignOut()">
-        <mat-icon>work_outline</mat-icon>
-    </a>
+    <span class="fill-remaining-space"></span>
     <button mat-button *ngIf="info && !info.isLoggedIn" [routerLink]="['/me']">
         SignIn
     </button>
+    <button mat-button [matMenuTriggerFor]="appMenu" *ngIf="info && info.isLoggedIn">
+        {{ info.displayName }}
+        <img [src]="info.photoURL" style="height:30px" />
+    </button>
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item (click)="doSignOut()">Signout</button>
+    </mat-menu>
 </mat-toolbar>

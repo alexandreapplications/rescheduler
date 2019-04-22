@@ -1,0 +1,17 @@
+.mainContent {
+    margin: 8px;
+    .second-row {
+        justify-content: space-between;
+        mat-card {
+            flex-basis: 47%;
+            margin-top: 15px;
+        }
+    }
+}
+@media (min-width: 600px) {
+    .mainContent {
+        .second-row {
+            display: flex;
+        }
+    }
+}

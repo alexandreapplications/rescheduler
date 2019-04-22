@@ -31,7 +31,9 @@ export class SecurityService {
     }
 
     public doReturnAsLogged() {
-        if (this._currentRoute) this.router.navigateByUrl('me');
+        if (this._currentRoute) {
+            this.router.navigateByUrl('me');
+        }
     }
 
     public doNavigateToLogin() {
@@ -40,7 +42,7 @@ export class SecurityService {
 
     public doFacebookLogin() {
         return new Promise<any>((resolve, reject) => {
-            let provider = new firebase.auth.FacebookAuthProvider();
+            const provider = new firebase.auth.FacebookAuthProvider();
             // provider.addScope('user_birthday');
             this.afAuth.auth.signInWithPopup(provider).then(
                 (res) => {
@@ -56,7 +58,7 @@ export class SecurityService {
 
     public doGoogleLogin() {
         return new Promise<any>((resolve, reject) => {
-            let provider = new firebase.auth.GoogleAuthProvider();
+            const provider = new firebase.auth.GoogleAuthProvider();
             provider.addScope('profile');
             provider.addScope('email');
             this.afAuth.auth.signInWithPopup(provider).then((res) => {

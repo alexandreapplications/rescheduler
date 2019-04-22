@@ -1,3 +1,16 @@
 mat-form-field {
-  width: 100%;
+    width: 100%;
+}
+.logon-container {
+    margin: 15px;
+}
+@media (min-width: 600px) {
+    .logon-container {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        mat-card {
+            flex-basis: 500px;
+        }
+    }
 }

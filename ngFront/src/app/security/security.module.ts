@@ -6,12 +6,14 @@ import { MatCardModule, MatInputModule, MatButtonModule, MatDatepickerModule } f
 import { ReactiveFormsModule } from '@angular/forms';
 import { LogonComponent } from './logon/logon.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [LogonComponent, SubscribeComponent],
     imports: [
         CommonModule,
         SecurityRoutingModule,
+        SharedModule,
         MatCardModule,
         MatInputModule,
         MatButtonModule,

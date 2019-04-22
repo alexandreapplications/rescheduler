@@ -1,9 +1,7 @@
-const functions = require('firebase-functions');
+const functions = require("firebase-functions");
 
 // [START setup cors]
-const cors = require("cors")({
-  origin: true
-});
+const cors = require("cors");
 // [END setup cors]
 
 // [START setup firebase]
@@ -25,11 +23,18 @@ const express = require("express");
 
 function setupRoute(route) {
   const app = express();
-  app.use(cors);
+  app.use(
+    cors({
+      origin: [
+        "http://localhost:4200",
+        "http://localhost:8080",
+        "https://sharing-schedule.firebaseapp.com"
+      ]
+    })
+  );
   app.use("/", route);
   return app;
 }
-
 exports.resType = functions.https.onRequest(setupRoute(resTypeRouter));
 exports.resItem = functions.https.onRequest(setupRoute(resItemRouter));
 exports.domain = functions.https.onRequest(setupRoute(domainRouter));

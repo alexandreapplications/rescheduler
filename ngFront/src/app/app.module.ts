@@ -14,6 +14,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MatToolbarModule, MatCardModule, MatSidenavModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     declarations: [AppComponent, MainComponent],
@@ -21,10 +23,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        FlexLayoutModule,
         SharedModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+        MatToolbarModule,
+        MatCardModule,
+        MatSidenavModule,
     ],
     providers: [DomainService, ResourceItemService, SecurityService, UserService, HttpClient],
     bootstrap: [AppComponent],
