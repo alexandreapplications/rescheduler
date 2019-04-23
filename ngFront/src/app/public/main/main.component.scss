@@ -2,7 +2,8 @@
     margin: 8px;
     .second-row {
         justify-content: space-between;
-        mat-card {
+        .what-advantages,
+        .how-much-it-custs {
             flex-basis: 47%;
             margin-top: 15px;
         }
