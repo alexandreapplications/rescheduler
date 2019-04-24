@@ -23,25 +23,35 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        if (this.security.isLogged) {
-            return true;
-        }
-        let result = true;
-        this.security.currentUserObservable
-            .pipe(
-                take(1),
-                map((user) => !!user),
-                tap((loggedIn) => {
-                    if (!loggedIn) {
-                        console.log('access denied');
-                        this.router.navigate(['/security', 'signin']);
-                    }
-                }),
-            )
-            .subscribe((x) => {
-                result = x;
+        return new Promise<boolean>((resolve) => {
+            this.security.currentUserObservable.subscribe((value) => {
+                if (value) {
+                    resolve(true);
+                } else {
+                    this.router.navigate(['/security', 'signin']);
+                    resolve(false);
+                }
             });
-        return result;
+        });
+        // if (this.security.isLogged) {
+        //     return true;
+        // }
+        // let result = true;
+        // this.security.currentUserObservable
+        //     .pipe(
+        //         take(1),
+        //         map((user) => !!user),
+        //         tap((loggedIn) => {
+        //             if (!loggedIn) {
+        //                 console.log('access denied');
+        //                 this.router.navigate(['/security', 'signin']);
+        //             }
+        //         }),
+        //     )
+        //     .subscribe((x) => {
+        //         result = x;
+        //     });
+        // return result;
     }
     canActivateChild(
         next: ActivatedRouteSnapshot,

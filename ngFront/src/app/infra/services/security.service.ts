@@ -18,12 +18,12 @@ export class SecurityService {
         });
     }
 
-    private _currentRoute: UrlSegment[];
+    private currentRoute: UrlSegment[];
 
     public isLogged = false;
 
     public doSetNextRouteUrl(routeUrl: UrlSegment[]) {
-        this._currentRoute = routeUrl;
+        this.currentRoute = routeUrl;
     }
 
     get currentUserObservable(): Observable<firebase.User> {
@@ -31,7 +31,7 @@ export class SecurityService {
     }
 
     public doReturnAsLogged() {
-        if (this._currentRoute) {
+        if (this.currentRoute) {
             this.router.navigateByUrl('me');
         }
     }
