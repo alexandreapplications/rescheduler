@@ -8,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PageStructureComponent implements OnInit {
     @Input() title: string;
 
+    events: string[] = [];
+    opened = true;
     constructor() {}
 
     ngOnInit() {}

@@ -1,0 +1,21 @@
+// .mat-sidenav-content {
+//   overflow-y: scroll;
+// }
+
+div {
+  display: flex;
+  /* lay items out vertically */
+  flex-direction: column;
+  /* make sure it's at least as tall as the viewport */
+  min-height: 100vh;
+  background-color: aqua;
+  align-items: stretch;
+
+  mat-sidenav-container {
+    flex: 1 1 auto;
+
+    mat-sidenav-content {
+      overflow: auto;
+    }
+  }
+}

@@ -1,13 +1,15 @@
 .fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
+  /* This fills the remaining space, by using flexbox. 
        Every toolbar row uses a flexbox row layout. */
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
+
 h1 {
-    cursor: pointer;
+  cursor: pointer;
 }
+
 .mat-toolbar {
-    height: 56px;
-    border-bottom: 1px solid black;
-    width: 100%;
+  height: 56px;
+  border-bottom: 1px solid black;
+  width: 100%;
 }

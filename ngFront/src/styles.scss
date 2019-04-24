@@ -23,13 +23,11 @@ $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 // CSS class whatever you want. In this example, any component inside of an element with
 // `dark-theme` will be affected by this alternate dark theme instead of the default theme.
 .dark-theme {
-    @include angular-material-theme($dark-theme);
+  @include angular-material-theme($dark-theme);
 }
+
 body {
-    display: flex;
-    /* lay items out vertically */
-    flex-direction: column;
-    /* make sure it's at least as tall as the viewport */
-    min-height: 100vh;
-    margin: 0px; /*removes default style*/
+  margin: 0px;
+  /*removes default style*/
+  overflow: hidden;
 }
