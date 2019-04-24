@@ -1,21 +1,23 @@
-<div *ngIf="itemList">
-  <div fxLayout.lt-sm="column" fxLayout.gt-xs="row wrap" fxLayoutAlign.gt-xs="start" fxLayoutGap="10px">
-    <mat-card *ngFor="let item of itemList" fxFlex.gt-xs="30">
-      <img mat-card-image src="../../../assets/img/generic-company/chris-lawton-236413-unsplash_tn.jpg" />
-      <mat-card-title>{{ item.value.name }}</mat-card-title>
-      <mat-card-subtitle>Associated company</mat-card-subtitle>
-      <mat-card-content>
-        <p>Last used july</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <a mat-button [routerLink]="['/', item.id]">Enter</a>
-        <button mat-button>Book</button>
-        <button mat-button>Dismiss</button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
+<rsc-page-structure title="My Place">
+  <div *ngIf="itemList">
+    <div fxLayout.lt-sm="column" fxLayout.gt-xs="row wrap" fxLayoutAlign.gt-xs="start" fxLayoutGap="10px">
+      <mat-card *ngFor="let item of itemList" fxFlex.gt-xs="30">
+        <img mat-card-image src="../../../assets/img/generic-company/chris-lawton-236413-unsplash_tn.jpg" />
+        <mat-card-title>{{ item.value.name }}</mat-card-title>
+        <mat-card-subtitle>Associated company</mat-card-subtitle>
+        <mat-card-content>
+          <p>Last used july</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-button [routerLink]="['/', item.id]">Enter</a>
+          <button mat-button>Book</button>
+          <button mat-button>Dismiss</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
 
-</div>
-<div *ngIf="!itemList">
-  Loading
-</div>
+  </div>
+  <div *ngIf="!itemList">
+    Loading
+  </div>
+</rsc-page-structure>
