@@ -1,14 +1,8 @@
-  <rsc-header-bar></rsc-header-bar>
-  <div>
-    <mat-toolbar color="accent" *ngIf="title">
-      <h1>{{ title }}</h1>
-    </mat-toolbar>
-    <mat-sidenav-container>
-      <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-        Sidenav content
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <ng-content></ng-content>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div>
+<div class="main-container">
+    <rsc-header-bar class="main-header"></rsc-header-bar>
+    <div class="structure-container">
+        <div class="scrollable">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
